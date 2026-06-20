@@ -1,0 +1,115 @@
+aid: sleekflow
+name: SleekFlow
+review:
+  question: Does SleekFlow expose a documented public WebSocket or streaming API?
+  answer: false
+  date: '2026-06-20'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. SleekFlow's documented real-time
+    integration surface is outbound HTTP webhooks (callbacks), not a
+    server-to-client streaming transport such as Server-Sent Events or
+    WebSocket. Webhooks are modeled as REST callbacks in the OpenAPI document
+    rather than as an AsyncAPI streaming channel.
+findings:
+  summary: |
+    SleekFlow does not publish a documented public WebSocket or SSE streaming
+    API. The SleekFlow Platform API (https://api.sleekflow.io) is a REST/HTTPS
+    API authenticated with a Platform API key issued from the Integrations
+    dashboard (Admin access required, Premium/Enterprise plans). Real-time
+    integration is delivered via outbound webhooks: SleekFlow POSTs event
+    payloads (new/updated contact, incoming message) to a customer-registered
+    callback URL. This is one-way HTTP push, not a bidirectional or persistent
+    streaming connection. A separate, older WhatsApp-focused "Messaging API"
+    is documented at sleekflow.stoplight.io and is also REST + webhook based.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.sleekflow.io
+      documented: true
+    - protocol: Webhook
+      scheme: https
+      note: >-
+        Outbound HTTP callbacks to a customer-registered URL for contact and
+        message events. One-way server-to-customer push, not WebSocket.
+      documented: true
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: >-
+        No WebSocket endpoint is documented in the SleekFlow Platform API
+        reference or help center as of the review date.
+  endpointsConfirmedRest:
+    - GET    https://api.sleekflow.io/v1/contacts
+    - POST   https://api.sleekflow.io/v1/contacts
+    - POST   https://api.sleekflow.io/v1/contacts/search
+    - GET    https://api.sleekflow.io/v1/contacts/{contactId}
+    - DELETE https://api.sleekflow.io/v1/contacts/{contactId}
+    - GET    https://api.sleekflow.io/v1/lists
+    - POST   https://api.sleekflow.io/v1/lists
+    - GET    https://api.sleekflow.io/v1/lists/{listId}
+    - POST   https://api.sleekflow.io/v1/lists/{listId}/contacts
+    - DELETE https://api.sleekflow.io/v1/lists/{listId}/contacts
+    - GET    https://api.sleekflow.io/v1/conversations
+    - GET    https://api.sleekflow.io/v1/conversations/{conversationId}/messages
+    - PUT    https://api.sleekflow.io/v1/conversations/{conversationId}/assignee
+    - POST   https://api.sleekflow.io/v1/messages
+    - POST   https://api.sleekflow.io/v1/messages/file
+    - POST   https://api.sleekflow.io/v1/messages/note
+    - GET    https://api.sleekflow.io/v1/companies
+    - GET    https://api.sleekflow.io/v1/staff
+    - GET    https://api.sleekflow.io/v1/teams
+    - POST   https://api.sleekflow.io/v1/webhooks
+  webhooks:
+    documented: true
+    style: Outbound HTTP POST callbacks to a customer-registered URL.
+    events:
+      - contact.created
+      - contact.updated
+      - message.received
+    note: >-
+      Webhook event names above are representative of the documented
+      "new/updated contact" and "new incoming message" triggers; confirm exact
+      event identifiers and payload schemas in the SleekFlow reference during
+      reconciliation.
+sources:
+  - url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+    type: APIReference
+    note: Platform API reference (Stoplight); REST endpoints across Contacts, Messaging, Inbox, Staff/Team, Lists.
+  - url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+    type: APIReference
+    note: Messaging APIs - send message, send local file with message, send internal note, check WhatsApp Business conversation window.
+  - url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+    type: APIReference
+    note: Contact APIs and List APIs (get/search/add/update/delete contacts; get/create/manage lists).
+  - url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+    type: APIReference
+    note: Staff and Team APIs.
+  - url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+    type: Documentation
+    note: Platform API key issuance (Admin only), plan gating, and shared API call quota; no WebSocket mentioned.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE streaming surface exists. The real-time surface is
+    outbound REST webhooks, which are represented in the OpenAPI document and
+    described here. No AsyncAPI document was authored. Endpoint paths in the
+    OpenAPI document follow SleekFlow's documented Platform API resources;
+    exact path casing and request/response schemas should be confirmed against
+    the live Stoplight reference (which renders client-side and was not
+    machine-extractable at review time) during reconciliation.
+caveats: |
+    The apidoc.sleekflow.io reference is a client-side rendered Stoplight
+    project; the bundled OpenAPI could not be machine-extracted at review
+    time. Operation NAMES and categories were confirmed from the rendered
+    section pages and SleekFlow help/blog content. The base host
+    (https://api.sleekflow.io) is confirmed. Concrete request paths, the exact
+    API key header name (modeled as X-Sleekflow-ApiKey), API version prefix
+    (modeled as /v1), and field-level schemas are reconstructed to be
+    RESTfully faithful and are NOT byte-for-byte reconciled against the live
+    spec.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

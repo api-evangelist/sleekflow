@@ -1,0 +1,70 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: SleekFlow
+providerId: sleekflow
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Messaging
+- Omnichannel
+- WhatsApp
+- Customer Engagement
+- Social Commerce
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  SleekFlow enforces a per-account API call usage limit on the Platform API
+  that is determined by the account's subscription plan and is shared across
+  the Platform API, Make.com, and Zapier integration requests. Platform API
+  access itself requires a Premium or Enterprise plan. Specific per-minute /
+  per-day request quotas are not published and are not reconciled in this
+  artifact. WhatsApp Business / channel messaging is additionally subject to
+  the underlying provider's (Meta and other channels') messaging limits and
+  quality-based throughput tiers.
+notes: >-
+  Verify the per-plan API call quota and any per-minute/per-day throttling in
+  the SleekFlow Integrations dashboard and help center during reconciliation;
+  values change with subscription tier. Channel-level limits are governed by
+  Meta WhatsApp Business and the respective channels.
+sources:
+- https://help.sleekflow.io/en_US/integrations/platform-api-integration
+- https://sleekflow.io/pricing
+responseCodes:
+  throttled: 429
+limits:
+- name: Platform API Calls
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: >-
+    Per-account API call allowance set by subscription plan; shared across
+    Platform API, Make.com, and Zapier requests.
+- name: Make.com / Zapier Integration Calls
+  scope: account
+  metric: requests
+  limit: shared with Platform API quota
+  notes: Counts against the same per-account API call allowance.
+- name: WhatsApp Business Messaging
+  scope: account
+  metric: conversations
+  limit: governed by Meta WhatsApp Business limits
+  notes: >-
+    Throughput and template messaging governed by Meta's quality-based
+    messaging tiers, not by SleekFlow directly.
+policies:
+- name: Plan-Gated Access
+  description: Platform API access requires a Premium or Enterprise subscription.
+- name: Shared Quota
+  description: >-
+    Platform API, Make.com, and Zapier requests draw from a single shared
+    per-account API call allowance.
+- name: Backoff Strategy
+  description: >-
+    Clients should implement exponential backoff with jitter and honor
+    Retry-After on HTTP 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

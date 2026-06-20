@@ -1,0 +1,113 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: SleekFlow
+providerId: sleekflow
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Messaging
+- Omnichannel
+- WhatsApp
+- Customer Engagement
+- Social Commerce
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of SleekFlow spend. SleekFlow bills a recurring monthly (or
+  annual) subscription per plan (Free, Pro, Premium, Enterprise) with seat and
+  Monthly Active Contact (MAC) allowances, plus usage-based charges for
+  additional MACs and pass-through WhatsApp Business / channel conversation
+  costs. Platform API access is bundled into Premium and Enterprise plans
+  rather than billed per call. Exact rates are not reconciled.
+notes: >-
+  Per-plan prices, MAC allowances, and channel conversation pass-through rates
+  are subject to change; verify against the SleekFlow pricing page and invoice
+  exports during reconciliation.
+sources:
+- https://sleekflow.io/pricing
+- https://help.sleekflow.io/en_US/integrations/platform-api-integration
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: SleekFlow
+serviceCategory: Business Application Services
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+  - Adjustment
+focusColumns:
+  ServiceName: SleekFlow Platform
+  ServiceCategory: Business Application Services
+  ProviderName: SleekFlow
+  PublisherName: SleekFlow
+  InvoiceIssuerName: SleekFlow
+  BillingCurrency: USD
+  ChargeCategory: Purchase
+  PricingCategory: Subscription-Based
+meters:
+- name: subscription_seats
+  description: Subscription plan and included user seats billed per month.
+  unit: seats
+  aggregation: max
+  dimensions:
+  - account
+  - plan
+- name: monthly_active_contacts
+  description: >-
+    Monthly Active Contacts (MACs) - contacts messaged to or from within the
+    billing month; overage billed per additional contact.
+  unit: contacts
+  aggregation: max
+  dimensions:
+  - account
+  - plan
+- name: channel_conversations
+  description: >-
+    WhatsApp Business and other channel conversations passed through at
+    provider (Meta / channel) rates.
+  unit: conversations
+  aggregation: sum
+  dimensions:
+  - account
+  - channel
+- name: api_calls
+  description: >-
+    Platform API / Make.com / Zapier requests against the shared per-account
+    allowance included in the plan.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - integration
+principles:
+- name: Visibility
+  description: >-
+    Track MAC counts and channel conversation volume monthly; the MAC model
+    means inactive stored contacts do not drive cost.
+- name: Allocation
+  description: >-
+    Map seats, MAC overage, and channel conversation pass-through to teams and
+    campaigns.
+- name: Optimization
+  description: >-
+    Right-size the plan tier to actual seat and MAC usage; consolidate
+    broadcast sends to manage channel conversation costs; reuse the shared API
+    allowance across integrations rather than duplicating calls.
+- name: Accountability
+  description: >-
+    Assign plan and channel-cost owners; review subscription and overage spend
+    against budget each billing cycle.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

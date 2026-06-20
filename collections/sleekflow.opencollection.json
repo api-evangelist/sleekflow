@@ -1,0 +1,420 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SleekFlow Platform API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": {
+        "key": "X-Sleekflow-ApiKey",
+        "value": "{{apiKey}}",
+        "in": "header"
+      }
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contacts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get list of contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/contacts"
+          },
+          "docs": "Returns a paginated list of contacts with their contact information."
+        },
+        {
+          "info": {
+            "name": "Add or update contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new contact or updates an existing contact matched by phone number or email."
+        },
+        {
+          "info": {
+            "name": "Search contacts",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/contacts/search",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Searches contacts by filter criteria. Supports dynamic included fields to control which contact properties are returned."
+        },
+        {
+          "info": {
+            "name": "Get contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/contacts/{contactId}"
+          },
+          "docs": "Returns a single contact by its identifier."
+        },
+        {
+          "info": {
+            "name": "Delete contact",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sleekflow.io/v1/contacts/{contactId}"
+          },
+          "docs": "Deletes a contact by its identifier."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/lists"
+          },
+          "docs": "Returns all contact lists for the account."
+        },
+        {
+          "info": {
+            "name": "Create list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/lists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new contact list."
+        },
+        {
+          "info": {
+            "name": "Get list details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/lists/{listId}"
+          },
+          "docs": "Returns details and membership for a contact list."
+        },
+        {
+          "info": {
+            "name": "Delete list",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sleekflow.io/v1/lists/{listId}"
+          },
+          "docs": "Deletes a contact list."
+        },
+        {
+          "info": {
+            "name": "Add contacts to list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/lists/{listId}/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds one or more contacts to a contact list."
+        },
+        {
+          "info": {
+            "name": "Remove contacts from list",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sleekflow.io/v1/lists/{listId}/contacts",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes one or more contacts from a contact list."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Conversations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/conversations"
+          },
+          "docs": "Returns conversations, optionally filtered by assignee, team, status, channel, and date range, for analytics and inbox integrations."
+        },
+        {
+          "info": {
+            "name": "Get messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/conversations/{conversationId}/messages"
+          },
+          "docs": "Returns the messages within a conversation."
+        },
+        {
+          "info": {
+            "name": "Update conversation's assignee",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sleekflow.io/v1/conversations/{conversationId}/assignee",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the staff member or team assigned to a conversation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Messaging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a message to a contact over a supported channel such as WhatsApp, Facebook Messenger, Instagram, WeChat, LINE, or SMS."
+        },
+        {
+          "info": {
+            "name": "Send local file with message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/messages/file",
+            "body": {
+              "type": "multipart-form",
+              "data": []
+            }
+          },
+          "docs": "Sends a message with an attached local file to a contact."
+        },
+        {
+          "info": {
+            "name": "Send internal note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/messages/note",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds an internal note to a conversation, visible only to staff."
+        },
+        {
+          "info": {
+            "name": "Check WhatsApp Business conversation window",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/messages/conversation-window"
+          },
+          "docs": "Checks whether the 24-hour WhatsApp Business customer service window is open for a contact, determining whether a free-form message or a template message must be sent."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Companies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get companies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/companies"
+          },
+          "docs": "Returns a list of company records."
+        },
+        {
+          "info": {
+            "name": "Create company",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/companies",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new company record."
+        },
+        {
+          "info": {
+            "name": "Get company",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/companies/{companyId}"
+          },
+          "docs": "Returns a single company record."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Staff and Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all staff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/staff"
+          },
+          "docs": "Returns all staff members in the account."
+        },
+        {
+          "info": {
+            "name": "Get staff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/staff/{staffId}"
+          },
+          "docs": "Returns a single staff member."
+        },
+        {
+          "info": {
+            "name": "Get all teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/teams"
+          },
+          "docs": "Returns all teams in the account."
+        },
+        {
+          "info": {
+            "name": "Create team",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/teams",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new team."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhook subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/webhooks"
+          },
+          "docs": "Returns the registered webhook subscriptions."
+        },
+        {
+          "info": {
+            "name": "Register webhook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a webhook callback URL to receive events such as new and updated contacts and incoming messages."
+        }
+      ]
+    }
+  ]
+}

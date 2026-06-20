@@ -1,0 +1,160 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: SleekFlow
+providerId: sleekflow
+created: '2026-06-20'
+modified: '2026-06-20'
+reconciled: false
+tags:
+- Messaging
+- Omnichannel
+- WhatsApp
+- Customer Engagement
+- Social Commerce
+- Plans
+description: >-
+  SleekFlow sells subscription plans (Free, Pro, Premium, Enterprise) priced
+  per month with tiered limits on user seats and Monthly Active Contacts
+  (MACs). A contact is counted as "active" only when a message is sent to or
+  received from them within a billing month. Platform API access is gated to
+  Premium and Enterprise plans, and API call quotas are shared across the
+  Platform API, Make.com, and Zapier integrations. WhatsApp Business / channel
+  conversation costs are passed through on top of the subscription. Exact
+  per-plan prices and quotas vary by region, billing cycle, and may change;
+  values below are representative and not reconciled.
+notes: >-
+  Representative pricing observed on the SleekFlow pricing page and
+  third-party listings; verify current prices, seat counts, MAC allowances,
+  and channel conversation fees on sleekflow.io/pricing during reconciliation.
+sources:
+- https://sleekflow.io/pricing
+- https://help.sleekflow.io/en_US/integrations/platform-api-integration
+plans:
+- id: sleekflow-free
+  name: Free
+  type: free
+  description: >-
+    Entry-level plan for getting started with the shared inbox and basic
+    omnichannel messaging. Does not include Platform API access.
+  entries:
+  - label: Monthly Subscription
+    name: free
+    type: flat
+    metric: subscription
+    limit: 0
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: $0
+    userMultiplied: false
+  elements:
+  - name: Shared Inbox
+  - name: Basic Channels
+- id: sleekflow-pro
+  name: Pro
+  type: paid
+  description: >-
+    For small teams; includes additional seats, contact allowance, basic
+    chatbots, broadcast, and commerce integrations. Platform API access is
+    not included at this tier.
+  entries:
+  - label: Monthly Subscription
+    name: pro
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from ~$199/month (billed monthly; varies by region and seats)
+    userMultiplied: false
+  elements:
+  - name: Multiple Seats
+  - name: Monthly Active Contacts Allowance
+  - name: Basic Chatbots
+  - name: Broadcast
+  - name: Commerce Integrations
+- id: sleekflow-premium
+  name: Premium
+  type: paid
+  description: >-
+    For scaling businesses; expands seats and contact allowance and adds
+    advanced automation, custom objects, ticketing, analytics, and Platform
+    API access.
+  entries:
+  - label: Monthly Subscription
+    name: premium
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: from ~$399/month (billed monthly; varies by region and seats)
+    userMultiplied: false
+  elements:
+  - name: Advanced Automation
+  - name: Custom Objects
+  - name: Ticketing
+  - name: Analytics Dashboard
+  - name: Platform API Access
+- id: sleekflow-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    For large organizations; custom pricing and usage limits with unlimited
+    broadcast quotas, Salesforce integration, advanced analytics exports, PII
+    masking, IP allowlisting, and dedicated customer success. Contact sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom Usage Limits
+  - name: Platform API Access
+  - name: Salesforce Integration
+  - name: Advanced Analytics Exports
+  - name: PII Masking
+  - name: Dedicated Customer Success
+- id: sleekflow-usage
+  name: Usage Add-ons
+  type: usage
+  description: >-
+    Usage-based charges layered on top of the subscription, including
+    additional Monthly Active Contacts and pass-through channel / WhatsApp
+    Business conversation costs. Rates not reconciled.
+  entries:
+  - label: Additional Monthly Active Contacts
+    name: additional_macs
+    type: usage
+    metric: contacts
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: see provider pricing (varies by plan and region)
+    userMultiplied: false
+  - label: WhatsApp / Channel Conversations
+    name: channel_conversations
+    type: usage
+    metric: conversations
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: pass-through per-conversation rates (Meta / channel pricing)
+    userMultiplied: false
+  elements:
+  - name: Additional Contacts
+  - name: Channel Conversation Pass-through
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,1125 @@
+{
+  "item": [
+    {
+      "id": "dce68d49-027a-4f54-85c8-804024cb685e",
+      "name": "Contacts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a079ea63-2f62-40d4-9f11-406c1029b089",
+          "name": "Get list of contacts",
+          "request": {
+            "name": "Get list of contacts",
+            "description": "Returns a paginated list of contacts with their contact information.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/contacts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "contacts"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "e9542ac6-022b-4062-a896-b2c5dab4a1ce",
+          "name": "Add or update contact",
+          "request": {
+            "name": "Add or update contact",
+            "description": "Creates a new contact or updates an existing contact matched by phone number or email.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/contacts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "contacts"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "1a096582-2498-4fa4-be3a-904524662f15",
+          "name": "Search contacts",
+          "request": {
+            "name": "Search contacts",
+            "description": "Searches contacts by filter criteria. Supports dynamic included fields to control which contact properties are returned.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/contacts/search",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "contacts",
+                "search"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "cff0b65f-d0ce-456c-b98f-c77a51566ed1",
+          "name": "Get contact",
+          "request": {
+            "name": "Get contact",
+            "description": "Returns a single contact by its identifier.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/contacts/{contactId}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "contacts",
+                "{contactId}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "1c19afb1-17cf-4bbe-a017-9e2c0260aae6",
+          "name": "Delete contact",
+          "request": {
+            "name": "Delete contact",
+            "description": "Deletes a contact by its identifier.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/contacts/{contactId}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "contacts",
+                "{contactId}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "f83a9c8f-e219-4201-b551-143b6fe25847",
+      "name": "Lists",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c31e5906-d5b0-424d-bf6c-2cf32099de93",
+          "name": "Get lists",
+          "request": {
+            "name": "Get lists",
+            "description": "Returns all contact lists for the account.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/lists",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "lists"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "a8af90b0-c97c-4372-8c88-a8f7d78300e9",
+          "name": "Create list",
+          "request": {
+            "name": "Create list",
+            "description": "Creates a new contact list.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/lists",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "lists"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "933e4440-bb21-4ade-8257-d2e5a5286eec",
+          "name": "Get list details",
+          "request": {
+            "name": "Get list details",
+            "description": "Returns details and membership for a contact list.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/lists/{listId}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "lists",
+                "{listId}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "d10af394-c3d4-4a50-bb63-85e19981ca5e",
+          "name": "Delete list",
+          "request": {
+            "name": "Delete list",
+            "description": "Deletes a contact list.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/lists/{listId}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "lists",
+                "{listId}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "7a1cc025-1b50-430e-b9ee-4993efad2900",
+          "name": "Add contacts to list",
+          "request": {
+            "name": "Add contacts to list",
+            "description": "Adds one or more contacts to a contact list.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/lists/{listId}/contacts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "lists",
+                "{listId}",
+                "contacts"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "e957e5d7-f719-42de-9ab2-75dc19274e65",
+          "name": "Remove contacts from list",
+          "request": {
+            "name": "Remove contacts from list",
+            "description": "Removes one or more contacts from a contact list.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/lists/{listId}/contacts",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "lists",
+                "{listId}",
+                "contacts"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "ebbe5439-c54a-460a-be16-80bd9a09492a",
+      "name": "Conversations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eebbb06d-4680-4415-a171-81904e976100",
+          "name": "Get conversations",
+          "request": {
+            "name": "Get conversations",
+            "description": "Returns conversations, optionally filtered by assignee, team, status, channel, and date range, for analytics and inbox integrations.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/conversations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "conversations"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "636b4dae-3691-4050-9702-cc43a5243541",
+          "name": "Get messages",
+          "request": {
+            "name": "Get messages",
+            "description": "Returns the messages within a conversation.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/conversations/{conversationId}/messages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "conversations",
+                "{conversationId}",
+                "messages"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "a62fd620-ff2a-4bc2-8a54-26249300a921",
+          "name": "Update conversation's assignee",
+          "request": {
+            "name": "Update conversation's assignee",
+            "description": "Updates the staff member or team assigned to a conversation.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/conversations/{conversationId}/assignee",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "conversations",
+                "{conversationId}",
+                "assignee"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "dd1f2ffc-6011-4201-bf0b-797abb2e064f",
+      "name": "Messaging",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d3e7ca77-1cb5-4472-887e-cd8a98bead11",
+          "name": "Send message",
+          "request": {
+            "name": "Send message",
+            "description": "Sends a message to a contact over a supported channel such as WhatsApp, Facebook Messenger, Instagram, WeChat, LINE, or SMS.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/messages",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "messages"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "13d91934-3be4-496b-a9a6-3ef5fb63e976",
+          "name": "Send local file with message",
+          "request": {
+            "name": "Send local file with message",
+            "description": "Sends a message with an attached local file to a contact.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/messages/file",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "messages",
+                "file"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "c1be4199-4270-42ce-bcb6-c1c1e7fd139e",
+          "name": "Send internal note",
+          "request": {
+            "name": "Send internal note",
+            "description": "Adds an internal note to a conversation, visible only to staff.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/messages/note",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "messages",
+                "note"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "b4fda748-6a19-4e61-a0ec-036b597e4c26",
+          "name": "Check WhatsApp Business conversation window",
+          "request": {
+            "name": "Check WhatsApp Business conversation window",
+            "description": "Checks whether the 24-hour WhatsApp Business customer service window is open for a contact, determining whether a free-form message or a template message must be sent.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/messages/conversation-window",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "messages",
+                "conversation-window"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "56138aff-69dd-43fe-8286-684c1f67db53",
+      "name": "Companies",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09f14d52-abb3-4d4d-bc5f-4bd93c6f5097",
+          "name": "Get companies",
+          "request": {
+            "name": "Get companies",
+            "description": "Returns a list of company records.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/companies",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "companies"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "1be16995-bc54-4a3d-9136-9edbd25c5b9e",
+          "name": "Create company",
+          "request": {
+            "name": "Create company",
+            "description": "Creates a new company record.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/companies",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "companies"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        },
+        {
+          "id": "ed47981d-7b41-4096-a719-9bb7e4135124",
+          "name": "Get company",
+          "request": {
+            "name": "Get company",
+            "description": "Returns a single company record.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/companies/{companyId}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "companies",
+                "{companyId}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "29699afa-bcea-43b4-b800-582cdf137cbb",
+      "name": "Staff and Teams",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "94dd3443-16a7-4602-8040-1dd7f47edbd4",
+          "name": "Get all staff",
+          "request": {
+            "name": "Get all staff",
+            "description": "Returns all staff members in the account.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/staff",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "staff"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "662b2640-980e-401c-ad11-49a1177ad355",
+          "name": "Get staff",
+          "request": {
+            "name": "Get staff",
+            "description": "Returns a single staff member.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/staff/{staffId}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "staff",
+                "{staffId}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "1218fb21-784b-4b09-92da-ed04f60d4f69",
+          "name": "Get all teams",
+          "request": {
+            "name": "Get all teams",
+            "description": "Returns all teams in the account.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/teams",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "teams"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "418018e6-a665-447b-b2e6-6ebf0ea0b1c7",
+          "name": "Create team",
+          "request": {
+            "name": "Create team",
+            "description": "Creates a new team.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/teams",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "teams"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "id": "b2a4eba0-32c3-4630-82b5-9ab4fbdfc3ed",
+      "name": "Webhooks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2976408-342a-4ff8-bd5f-159066e5fc00",
+          "name": "List webhook subscriptions",
+          "request": {
+            "name": "List webhook subscriptions",
+            "description": "Returns the registered webhook subscriptions.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "webhooks"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": []
+        },
+        {
+          "id": "d76d2417-e732-4952-ac5c-1ac060498d66",
+          "name": "Register webhook subscription",
+          "request": {
+            "name": "Register webhook subscription",
+            "description": "Registers a webhook callback URL to receive events such as new and updated contacts and incoming messages.",
+            "url": {
+              "raw": "https://api.sleekflow.io/v1/webhooks",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "v1",
+                "webhooks"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Sleekflow-ApiKey",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.sleekflow.io",
+      "type": "string"
+    },
+    {
+      "key": "apiKey",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "info": {
+    "_postman_id": "7ae05946-2730-48e8-80fe-c1dfa4622f9c",
+    "name": "SleekFlow Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "SleekFlow Platform API - contacts, conversations & messaging, companies, lists, staff & teams, and webhooks. Auth via Platform API key in the X-Sleekflow-ApiKey header."
+  }
+}

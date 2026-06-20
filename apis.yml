@@ -1,0 +1,152 @@
+aid: sleekflow
+url: https://raw.githubusercontent.com/api-evangelist/sleekflow/refs/heads/main/apis.yml
+name: SleekFlow
+kind: company
+description: SleekFlow is an omnichannel social-commerce and customer-engagement
+  platform that unifies WhatsApp, Facebook Messenger, Instagram, WeChat, LINE, SMS,
+  and live chat into a single inbox with automation, broadcast, and AI. The SleekFlow
+  Platform API exposes contacts, conversations, messaging, companies, lists, staff
+  and teams, and webhooks for building custom integrations on top of the platform.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Messaging
+- Omnichannel
+- WhatsApp
+- Customer Engagement
+- Social Commerce
+- Automation
+created: '2026-06-20'
+modified: '2026-06-20'
+specificationVersion: '0.19'
+apis:
+- aid: sleekflow:contacts
+  name: SleekFlow Contacts API
+  tags:
+  - Contacts
+  - CRM
+  - Customers
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  baseURL: https://api.sleekflow.io
+  properties:
+  - url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+    type: Documentation
+  - url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+    type: APIReference
+  - url: openapi/sleekflow-openapi.yml
+    type: OpenAPI
+  - url: collections/sleekflow.postman_collection.json
+    type: PostmanCollection
+  description: Create, update, retrieve, search, and delete contacts, including
+    dynamic field selection, so customer records can be synced between SleekFlow
+    and external systems.
+- aid: sleekflow:conversations
+  name: SleekFlow Conversations & Messaging API
+  tags:
+  - Conversations
+  - Messaging
+  - Inbox
+  - WhatsApp
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+  baseURL: https://api.sleekflow.io
+  properties:
+  - url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+    type: APIReference
+  - url: openapi/sleekflow-openapi.yml
+    type: OpenAPI
+  - url: collections/sleekflow.postman_collection.json
+    type: PostmanCollection
+  description: Send messages, files, and internal notes across WhatsApp and other
+    channels, check the WhatsApp Business conversation window, retrieve
+    conversations and messages, and update a conversation's assignee in the
+    shared inbox.
+- aid: sleekflow:companies
+  name: SleekFlow Companies API
+  tags:
+  - Companies
+  - Organizations
+  - CRM
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+  baseURL: https://api.sleekflow.io
+  properties:
+  - url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+    type: APIReference
+  - url: openapi/sleekflow-openapi.yml
+    type: OpenAPI
+  - url: collections/sleekflow.postman_collection.json
+    type: PostmanCollection
+  description: Manage company records and associate contacts with companies for
+    B2B engagement workflows.
+- aid: sleekflow:lists
+  name: SleekFlow Lists API
+  tags:
+  - Lists
+  - Segmentation
+  - Contacts
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  baseURL: https://api.sleekflow.io
+  properties:
+  - url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+    type: APIReference
+  - url: openapi/sleekflow-openapi.yml
+    type: OpenAPI
+  - url: collections/sleekflow.postman_collection.json
+    type: PostmanCollection
+  description: Create and manage contact lists, retrieve list details, and add or
+    remove contacts from lists for segmentation and broadcast targeting.
+- aid: sleekflow:staff-teams
+  name: SleekFlow Staff & Teams API
+  tags:
+  - Staff
+  - Teams
+  - Users
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+  baseURL: https://api.sleekflow.io
+  properties:
+  - url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+    type: APIReference
+  - url: openapi/sleekflow-openapi.yml
+    type: OpenAPI
+  - url: collections/sleekflow.postman_collection.json
+    type: PostmanCollection
+  description: List and manage staff and teams, assign staff to teams, and read
+    per-staff conversation summaries for workforce and routing management.
+- aid: sleekflow:webhooks
+  name: SleekFlow Webhooks API
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+  baseURL: https://api.sleekflow.io
+  properties:
+  - url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+    type: Documentation
+  - url: openapi/sleekflow-openapi.yml
+    type: OpenAPI
+  - url: review.yml
+    type: Review
+  description: Register webhook subscriptions to receive real-time HTTP callbacks
+    for new and updated contacts and incoming messages, enabling event-driven
+    integrations.
+common:
+- type: LinkedIn
+  url: https://www.linkedin.com/company/sleekflow
+- type: Website
+  url: https://sleekflow.io
+- type: Documentation
+  url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+- type: Plans
+  url: plans/sleekflow-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/sleekflow-rate-limits.yml
+- type: FinOps
+  url: finops/sleekflow-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
