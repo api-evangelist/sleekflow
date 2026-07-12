@@ -135,6 +135,10 @@ apis:
     for new and updated contacts and incoming messages, enabling event-driven
     integrations.
 common:
+- type: DomainSecurity
+  url: security/sleekflow-domain-security.yml
+- type: Authentication
+  url: authentication/sleekflow-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/sleekflow
 - type: Website
@@ -147,6 +151,8 @@ common:
   url: rate-limits/sleekflow-rate-limits.yml
 - type: FinOps
   url: finops/sleekflow-finops.yml
+- url: https://sleekflow.io/blog
+  type: Blog
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
