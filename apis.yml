@@ -135,6 +135,8 @@ apis:
     for new and updated contacts and incoming messages, enabling event-driven
     integrations.
 common:
+- type: AgenticAccess
+  url: agentic-access/sleekflow-agentic-access.yml
 - type: DomainSecurity
   url: security/sleekflow-domain-security.yml
 - type: Authentication
