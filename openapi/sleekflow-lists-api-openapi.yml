@@ -1,0 +1,167 @@
+openapi: 3.0.1
+info:
+  title: SleekFlow Platform Companies Lists API
+  description: The SleekFlow Platform API lets you build custom integrations on top of the SleekFlow omnichannel messaging platform. It exposes contacts, conversations and messaging (WhatsApp and other channels), companies, lists, staff and teams, and webhooks. Authentication uses a Platform API key issued from the SleekFlow Integrations dashboard (Admin access required), passed in the X-Sleekflow-ApiKey request header. Endpoint paths in this document follow SleekFlow's documented Platform API resources; verify exact paths and request/response shapes against the live reference at apidoc.sleekflow.io during reconciliation.
+  termsOfService: https://sleekflow.io/terms-of-service
+  contact:
+    name: SleekFlow Support
+    url: https://help.sleekflow.io
+  version: '1.0'
+servers:
+- url: https://api.sleekflow.io
+  description: SleekFlow Platform API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Lists
+  description: Manage contact lists and list membership.
+paths:
+  /v1/lists:
+    get:
+      operationId: getLists
+      tags:
+      - Lists
+      summary: Get lists
+      description: Returns all contact lists for the account.
+      responses:
+        '200':
+          description: A list of contact lists.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactGroup'
+    post:
+      operationId: createList
+      tags:
+      - Lists
+      summary: Create list
+      description: Creates a new contact list.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroupInput'
+      responses:
+        '200':
+          description: The created list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+  /v1/lists/{listId}:
+    get:
+      operationId: getListDetails
+      tags:
+      - Lists
+      summary: Get list details
+      description: Returns details and membership for a contact list.
+      parameters:
+      - name: listId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The contact list details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+    delete:
+      operationId: deleteList
+      tags:
+      - Lists
+      summary: Delete list
+      description: Deletes a contact list.
+      parameters:
+      - name: listId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: List deleted.
+  /v1/lists/{listId}/contacts:
+    post:
+      operationId: addContactsToList
+      tags:
+      - Lists
+      summary: Add contacts to list
+      description: Adds one or more contacts to a contact list.
+      parameters:
+      - name: listId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactIdList'
+      responses:
+        '200':
+          description: Contacts added to list.
+    delete:
+      operationId: removeContactsFromList
+      tags:
+      - Lists
+      summary: Remove contacts from list
+      description: Removes one or more contacts from a contact list.
+      parameters:
+      - name: listId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactIdList'
+      responses:
+        '200':
+          description: Contacts removed from list.
+components:
+  schemas:
+    ContactGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        contactCount:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+    ContactGroupInput:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
+    ContactIdList:
+      type: object
+      properties:
+        contactIds:
+          type: array
+          items:
+            type: string
+      required:
+      - contactIds
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Sleekflow-ApiKey
+      description: Platform API key issued from the SleekFlow Integrations dashboard (Admin access required).

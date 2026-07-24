@@ -1,0 +1,198 @@
+openapi: 3.0.1
+info:
+  title: SleekFlow Platform Companies Contacts API
+  description: The SleekFlow Platform API lets you build custom integrations on top of the SleekFlow omnichannel messaging platform. It exposes contacts, conversations and messaging (WhatsApp and other channels), companies, lists, staff and teams, and webhooks. Authentication uses a Platform API key issued from the SleekFlow Integrations dashboard (Admin access required), passed in the X-Sleekflow-ApiKey request header. Endpoint paths in this document follow SleekFlow's documented Platform API resources; verify exact paths and request/response shapes against the live reference at apidoc.sleekflow.io during reconciliation.
+  termsOfService: https://sleekflow.io/terms-of-service
+  contact:
+    name: SleekFlow Support
+    url: https://help.sleekflow.io
+  version: '1.0'
+servers:
+- url: https://api.sleekflow.io
+  description: SleekFlow Platform API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Contacts
+  description: Create, read, search, update, and delete contacts.
+paths:
+  /v1/contacts:
+    get:
+      operationId: getContacts
+      tags:
+      - Contacts
+      summary: Get list of contacts
+      description: Returns a paginated list of contacts with their contact information.
+      parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          default: 50
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: A paginated list of contacts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+    post:
+      operationId: addOrUpdateContact
+      tags:
+      - Contacts
+      summary: Add or update contact
+      description: Creates a new contact or updates an existing contact matched by phone number or email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactInput'
+      responses:
+        '200':
+          description: The created or updated contact.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+  /v1/contacts/search:
+    post:
+      operationId: searchContacts
+      tags:
+      - Contacts
+      summary: Search contacts
+      description: Searches contacts by filter criteria. Supports dynamic included fields to control which contact properties are returned.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactSearchRequest'
+      responses:
+        '200':
+          description: Matching contacts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+  /v1/contacts/{contactId}:
+    get:
+      operationId: getContact
+      tags:
+      - Contacts
+      summary: Get contact
+      description: Returns a single contact by its identifier.
+      parameters:
+      - name: contactId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: The requested contact.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '404':
+          description: Contact not found.
+    delete:
+      operationId: deleteContact
+      tags:
+      - Contacts
+      summary: Delete contact
+      description: Deletes a contact by its identifier.
+      parameters:
+      - name: contactId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Contact deleted.
+components:
+  schemas:
+    ContactList:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+    ContactInput:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        customFields:
+          type: object
+          additionalProperties: true
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        customFields:
+          type: object
+          additionalProperties: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ContactSearchRequest:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            type: object
+            properties:
+              fieldName:
+                type: string
+              operator:
+                type: string
+              value:
+                type: string
+        includedFields:
+          type: array
+          items:
+            type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Sleekflow-ApiKey
+      description: Platform API key issued from the SleekFlow Integrations dashboard (Admin access required).

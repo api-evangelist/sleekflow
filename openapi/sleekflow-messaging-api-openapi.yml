@@ -1,0 +1,177 @@
+openapi: 3.0.1
+info:
+  title: SleekFlow Platform Companies Messaging API
+  description: The SleekFlow Platform API lets you build custom integrations on top of the SleekFlow omnichannel messaging platform. It exposes contacts, conversations and messaging (WhatsApp and other channels), companies, lists, staff and teams, and webhooks. Authentication uses a Platform API key issued from the SleekFlow Integrations dashboard (Admin access required), passed in the X-Sleekflow-ApiKey request header. Endpoint paths in this document follow SleekFlow's documented Platform API resources; verify exact paths and request/response shapes against the live reference at apidoc.sleekflow.io during reconciliation.
+  termsOfService: https://sleekflow.io/terms-of-service
+  contact:
+    name: SleekFlow Support
+    url: https://help.sleekflow.io
+  version: '1.0'
+servers:
+- url: https://api.sleekflow.io
+  description: SleekFlow Platform API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Messaging
+  description: Send messages, files, and internal notes; check conversation windows.
+paths:
+  /v1/messages:
+    post:
+      operationId: sendMessage
+      tags:
+      - Messaging
+      summary: Send message
+      description: Sends a message to a contact over a supported channel such as WhatsApp, Facebook Messenger, Instagram, WeChat, LINE, or SMS.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendMessageRequest'
+      responses:
+        '200':
+          description: The sent message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /v1/messages/file:
+    post:
+      operationId: sendFileMessage
+      tags:
+      - Messaging
+      summary: Send local file with message
+      description: Sends a message with an attached local file to a contact.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                channel:
+                  type: string
+                contactId:
+                  type: string
+                message:
+                  type: string
+                file:
+                  type: string
+                  format: binary
+              required:
+              - channel
+              - contactId
+              - file
+      responses:
+        '200':
+          description: The sent message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /v1/messages/note:
+    post:
+      operationId: sendInternalNote
+      tags:
+      - Messaging
+      summary: Send internal note
+      description: Adds an internal note to a conversation, visible only to staff.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                conversationId:
+                  type: string
+                message:
+                  type: string
+              required:
+              - conversationId
+              - message
+      responses:
+        '200':
+          description: The created note.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /v1/messages/conversation-window:
+    get:
+      operationId: checkConversationWindow
+      tags:
+      - Messaging
+      summary: Check WhatsApp Business conversation window
+      description: Checks whether the 24-hour WhatsApp Business customer service window is open for a contact, determining whether a free-form message or a template message must be sent.
+      parameters:
+      - name: contactId
+        in: query
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Conversation window status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationWindow'
+components:
+  schemas:
+    SendMessageRequest:
+      type: object
+      properties:
+        contactId:
+          type: string
+        channel:
+          type: string
+          description: Channel code such as whatsapp, whatsappcloudapi, facebook, instagram, wechat, line, or sms.
+        message:
+          type: string
+        messageType:
+          type: string
+      required:
+      - contactId
+      - channel
+      - message
+    ConversationWindow:
+      type: object
+      properties:
+        contactId:
+          type: string
+        isWithinWindow:
+          type: boolean
+        windowExpiresAt:
+          type: string
+          format: date-time
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        conversationId:
+          type: string
+        contactId:
+          type: string
+        channel:
+          type: string
+        direction:
+          type: string
+          enum:
+          - inbound
+          - outbound
+        messageType:
+          type: string
+        message:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Sleekflow-ApiKey
+      description: Platform API key issued from the SleekFlow Integrations dashboard (Admin access required).
