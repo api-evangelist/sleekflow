@@ -7,7 +7,20 @@ description: SleekFlow is an omnichannel social-commerce and customer-engagement
   and live chat into a single inbox with automation, broadcast, and AI. The SleekFlow
   Platform API exposes contacts, conversations, messaging, companies, lists, staff
   and teams, and webhooks for building custom integrations on top of the platform.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/sleekflow.png
 tags:
 - Messaging
 - Omnichannel
@@ -19,121 +32,174 @@ created: '2026-06-20'
 modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
-- aid: sleekflow:contacts
-  name: SleekFlow Contacts API
-  tags:
-  - Contacts
-  - CRM
-  - Customers
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+- aid: sleekflow:sleekflow-companies-api
+  name: SleekFlow Companies API
+  description: Manage company records.
   humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
   baseURL: https://api.sleekflow.io
-  properties:
-  - url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
-    type: Documentation
-  - url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
-    type: APIReference
-  - url: openapi/sleekflow-openapi.yml
-    type: OpenAPI
-  - url: collections/sleekflow.postman_collection.json
-    type: PostmanCollection
-  description: Create, update, retrieve, search, and delete contacts, including
-    dynamic field selection, so customer records can be synced between SleekFlow
-    and external systems.
-- aid: sleekflow:conversations
-  name: SleekFlow Conversations & Messaging API
-  tags:
-  - Conversations
-  - Messaging
-  - Inbox
-  - WhatsApp
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
-  baseURL: https://api.sleekflow.io
-  properties:
-  - url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
-    type: APIReference
-  - url: openapi/sleekflow-openapi.yml
-    type: OpenAPI
-  - url: collections/sleekflow.postman_collection.json
-    type: PostmanCollection
-  description: Send messages, files, and internal notes across WhatsApp and other
-    channels, check the WhatsApp Business conversation window, retrieve
-    conversations and messages, and update a conversation's assignee in the
-    shared inbox.
-- aid: sleekflow:companies
-  name: SleekFlow Companies API
   tags:
   - Companies
-  - Organizations
-  - CRM
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
-  baseURL: https://api.sleekflow.io
   properties:
-  - url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
-    type: APIReference
-  - url: openapi/sleekflow-openapi.yml
-    type: OpenAPI
-  - url: collections/sleekflow.postman_collection.json
-    type: PostmanCollection
-  description: Manage company records and associate contacts with companies for
-    B2B engagement workflows.
-- aid: sleekflow:lists
-  name: SleekFlow Lists API
-  tags:
-  - Lists
-  - Segmentation
-  - Contacts
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  - type: OpenAPI
+    url: openapi/sleekflow-companies-api-openapi.yml
+  - type: Documentation
+    url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  - type: PostmanCollection
+    url: collections/sleekflow.postman_collection.json
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+  - type: Review
+    url: review.yml
+- aid: sleekflow:sleekflow-contacts-api
+  name: SleekFlow Contacts API
+  description: Create, read, search, update, and delete contacts.
   humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
   baseURL: https://api.sleekflow.io
-  properties:
-  - url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
-    type: APIReference
-  - url: openapi/sleekflow-openapi.yml
-    type: OpenAPI
-  - url: collections/sleekflow.postman_collection.json
-    type: PostmanCollection
-  description: Create and manage contact lists, retrieve list details, and add or
-    remove contacts from lists for segmentation and broadcast targeting.
-- aid: sleekflow:staff-teams
-  name: SleekFlow Staff & Teams API
   tags:
-  - Staff
-  - Teams
-  - Users
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
-  baseURL: https://api.sleekflow.io
+  - Contacts
   properties:
-  - url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
-    type: APIReference
-  - url: openapi/sleekflow-openapi.yml
-    type: OpenAPI
-  - url: collections/sleekflow.postman_collection.json
-    type: PostmanCollection
-  description: List and manage staff and teams, assign staff to teams, and read
-    per-staff conversation summaries for workforce and routing management.
-- aid: sleekflow:webhooks
+  - type: OpenAPI
+    url: openapi/sleekflow-contacts-api-openapi.yml
+  - type: Documentation
+    url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  - type: PostmanCollection
+    url: collections/sleekflow.postman_collection.json
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+  - type: Review
+    url: review.yml
+- aid: sleekflow:sleekflow-conversations-api
+  name: SleekFlow Conversations API
+  description: Read conversations and update conversation assignment.
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  baseURL: https://api.sleekflow.io
+  tags:
+  - Conversations
+  properties:
+  - type: OpenAPI
+    url: openapi/sleekflow-conversations-api-openapi.yml
+  - type: Documentation
+    url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  - type: PostmanCollection
+    url: collections/sleekflow.postman_collection.json
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+  - type: Review
+    url: review.yml
+- aid: sleekflow:sleekflow-lists-api
+  name: SleekFlow Lists API
+  description: Manage contact lists and list membership.
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  baseURL: https://api.sleekflow.io
+  tags:
+  - Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/sleekflow-lists-api-openapi.yml
+  - type: Documentation
+    url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  - type: PostmanCollection
+    url: collections/sleekflow.postman_collection.json
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+  - type: Review
+    url: review.yml
+- aid: sleekflow:sleekflow-messaging-api
+  name: SleekFlow Messaging API
+  description: Send messages, files, and internal notes; check conversation windows.
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  baseURL: https://api.sleekflow.io
+  tags:
+  - Messaging
+  properties:
+  - type: OpenAPI
+    url: openapi/sleekflow-messaging-api-openapi.yml
+  - type: Documentation
+    url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  - type: PostmanCollection
+    url: collections/sleekflow.postman_collection.json
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+  - type: Review
+    url: review.yml
+- aid: sleekflow:sleekflow-staff-and-teams-api
+  name: SleekFlow Staff and Teams API
+  description: Manage staff and teams.
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  baseURL: https://api.sleekflow.io
+  tags:
+  - Staff and Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/sleekflow-staff-and-teams-api-openapi.yml
+  - type: Documentation
+    url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  - type: PostmanCollection
+    url: collections/sleekflow.postman_collection.json
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+  - type: Review
+    url: review.yml
+- aid: sleekflow:sleekflow-webhooks-api
   name: SleekFlow Webhooks API
+  description: Register webhook subscriptions for platform events.
+  humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  baseURL: https://api.sleekflow.io
   tags:
   - Webhooks
-  - Events
-  - Notifications
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://help.sleekflow.io/en_US/integrations/platform-api-integration
-  baseURL: https://api.sleekflow.io
   properties:
-  - url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
-    type: Documentation
-  - url: openapi/sleekflow-openapi.yml
-    type: OpenAPI
-  - url: review.yml
-    type: Review
-  description: Register webhook subscriptions to receive real-time HTTP callbacks
-    for new and updated contacts and incoming messages, enabling event-driven
-    integrations.
+  - type: OpenAPI
+    url: openapi/sleekflow-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://help.sleekflow.io/en_US/integrations/platform-api-integration
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
+  - type: PostmanCollection
+    url: collections/sleekflow.postman_collection.json
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api
+  - type: APIReference
+    url: https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team
+  - type: Review
+    url: review.yml
 common:
 - type: AgenticAccess
   url: agentic-access/sleekflow-agentic-access.yml
