@@ -1,0 +1,878 @@
+openapi: 3.0.1
+info:
+  title: SleekFlow Platform API
+  description: >-
+    The SleekFlow Platform API lets you build custom integrations on top of the
+    SleekFlow omnichannel messaging platform. It exposes contacts, conversations
+    and messaging (WhatsApp and other channels), companies, lists, staff and
+    teams, and webhooks. Authentication uses a Platform API key issued from the
+    SleekFlow Integrations dashboard (Admin access required), passed in the
+    X-Sleekflow-ApiKey request header. Endpoint paths in this document follow
+    SleekFlow's documented Platform API resources; verify exact paths and
+    request/response shapes against the live reference at apidoc.sleekflow.io
+    during reconciliation.
+  termsOfService: https://sleekflow.io/terms-of-service
+  contact:
+    name: SleekFlow Support
+    url: https://help.sleekflow.io
+  version: '1.0'
+servers:
+  - url: https://api.sleekflow.io
+    description: SleekFlow Platform API
+security:
+  - ApiKeyAuth: []
+tags:
+  - name: Contacts
+    description: Create, read, search, update, and delete contacts.
+  - name: Lists
+    description: Manage contact lists and list membership.
+  - name: Conversations
+    description: Read conversations and update conversation assignment.
+  - name: Messaging
+    description: Send messages, files, and internal notes; check conversation windows.
+  - name: Companies
+    description: Manage company records.
+  - name: Staff and Teams
+    description: Manage staff and teams.
+  - name: Webhooks
+    description: Register webhook subscriptions for platform events.
+paths:
+  /v1/contacts:
+    get:
+      operationId: getContacts
+      tags:
+        - Contacts
+      summary: Get list of contacts
+      description: Returns a paginated list of contacts with their contact information.
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: A paginated list of contacts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+    post:
+      operationId: addOrUpdateContact
+      tags:
+        - Contacts
+      summary: Add or update contact
+      description: >-
+        Creates a new contact or updates an existing contact matched by phone
+        number or email.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactInput'
+      responses:
+        '200':
+          description: The created or updated contact.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+  /v1/contacts/search:
+    post:
+      operationId: searchContacts
+      tags:
+        - Contacts
+      summary: Search contacts
+      description: >-
+        Searches contacts by filter criteria. Supports dynamic included fields
+        to control which contact properties are returned.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactSearchRequest'
+      responses:
+        '200':
+          description: Matching contacts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+  /v1/contacts/{contactId}:
+    get:
+      operationId: getContact
+      tags:
+        - Contacts
+      summary: Get contact
+      description: Returns a single contact by its identifier.
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested contact.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contact'
+        '404':
+          description: Contact not found.
+    delete:
+      operationId: deleteContact
+      tags:
+        - Contacts
+      summary: Delete contact
+      description: Deletes a contact by its identifier.
+      parameters:
+        - name: contactId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Contact deleted.
+  /v1/lists:
+    get:
+      operationId: getLists
+      tags:
+        - Lists
+      summary: Get lists
+      description: Returns all contact lists for the account.
+      responses:
+        '200':
+          description: A list of contact lists.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ContactGroup'
+    post:
+      operationId: createList
+      tags:
+        - Lists
+      summary: Create list
+      description: Creates a new contact list.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactGroupInput'
+      responses:
+        '200':
+          description: The created list.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+  /v1/lists/{listId}:
+    get:
+      operationId: getListDetails
+      tags:
+        - Lists
+      summary: Get list details
+      description: Returns details and membership for a contact list.
+      parameters:
+        - name: listId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The contact list details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactGroup'
+    delete:
+      operationId: deleteList
+      tags:
+        - Lists
+      summary: Delete list
+      description: Deletes a contact list.
+      parameters:
+        - name: listId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: List deleted.
+  /v1/lists/{listId}/contacts:
+    post:
+      operationId: addContactsToList
+      tags:
+        - Lists
+      summary: Add contacts to list
+      description: Adds one or more contacts to a contact list.
+      parameters:
+        - name: listId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactIdList'
+      responses:
+        '200':
+          description: Contacts added to list.
+    delete:
+      operationId: removeContactsFromList
+      tags:
+        - Lists
+      summary: Remove contacts from list
+      description: Removes one or more contacts from a contact list.
+      parameters:
+        - name: listId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactIdList'
+      responses:
+        '200':
+          description: Contacts removed from list.
+  /v1/conversations:
+    get:
+      operationId: getConversations
+      tags:
+        - Conversations
+      summary: Get conversations
+      description: >-
+        Returns conversations, optionally filtered by assignee, team, status,
+        channel, and date range, for analytics and inbox integrations.
+      parameters:
+        - name: assignedTo
+          in: query
+          schema:
+            type: string
+        - name: teamId
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [open, pending, closed]
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: A list of conversations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Conversation'
+  /v1/conversations/{conversationId}/messages:
+    get:
+      operationId: getMessages
+      tags:
+        - Conversations
+      summary: Get messages
+      description: Returns the messages within a conversation.
+      parameters:
+        - name: conversationId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: A list of messages.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Message'
+  /v1/conversations/{conversationId}/assignee:
+    put:
+      operationId: updateConversationAssignee
+      tags:
+        - Conversations
+      summary: Update conversation's assignee
+      description: Updates the staff member or team assigned to a conversation.
+      parameters:
+        - name: conversationId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AssigneeUpdate'
+      responses:
+        '200':
+          description: The updated conversation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Conversation'
+  /v1/messages:
+    post:
+      operationId: sendMessage
+      tags:
+        - Messaging
+      summary: Send message
+      description: >-
+        Sends a message to a contact over a supported channel such as WhatsApp,
+        Facebook Messenger, Instagram, WeChat, LINE, or SMS.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendMessageRequest'
+      responses:
+        '200':
+          description: The sent message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /v1/messages/file:
+    post:
+      operationId: sendFileMessage
+      tags:
+        - Messaging
+      summary: Send local file with message
+      description: Sends a message with an attached local file to a contact.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                channel:
+                  type: string
+                contactId:
+                  type: string
+                message:
+                  type: string
+                file:
+                  type: string
+                  format: binary
+              required:
+                - channel
+                - contactId
+                - file
+      responses:
+        '200':
+          description: The sent message.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /v1/messages/note:
+    post:
+      operationId: sendInternalNote
+      tags:
+        - Messaging
+      summary: Send internal note
+      description: Adds an internal note to a conversation, visible only to staff.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                conversationId:
+                  type: string
+                message:
+                  type: string
+              required:
+                - conversationId
+                - message
+      responses:
+        '200':
+          description: The created note.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+  /v1/messages/conversation-window:
+    get:
+      operationId: checkConversationWindow
+      tags:
+        - Messaging
+      summary: Check WhatsApp Business conversation window
+      description: >-
+        Checks whether the 24-hour WhatsApp Business customer service window is
+        open for a contact, determining whether a free-form message or a
+        template message must be sent.
+      parameters:
+        - name: contactId
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Conversation window status.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConversationWindow'
+  /v1/companies:
+    get:
+      operationId: getCompanies
+      tags:
+        - Companies
+      summary: Get companies
+      description: Returns a list of company records.
+      responses:
+        '200':
+          description: A list of companies.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Company'
+    post:
+      operationId: createCompany
+      tags:
+        - Companies
+      summary: Create company
+      description: Creates a new company record.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CompanyInput'
+      responses:
+        '200':
+          description: The created company.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+  /v1/companies/{companyId}:
+    get:
+      operationId: getCompany
+      tags:
+        - Companies
+      summary: Get company
+      description: Returns a single company record.
+      parameters:
+        - name: companyId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested company.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Company'
+  /v1/staff:
+    get:
+      operationId: getAllStaff
+      tags:
+        - Staff and Teams
+      summary: Get all staff
+      description: Returns all staff members in the account.
+      responses:
+        '200':
+          description: A list of staff.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Staff'
+  /v1/staff/{staffId}:
+    get:
+      operationId: getStaff
+      tags:
+        - Staff and Teams
+      summary: Get staff
+      description: Returns a single staff member.
+      parameters:
+        - name: staffId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The requested staff member.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Staff'
+  /v1/teams:
+    get:
+      operationId: getAllTeams
+      tags:
+        - Staff and Teams
+      summary: Get all teams
+      description: Returns all teams in the account.
+      responses:
+        '200':
+          description: A list of teams.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+    post:
+      operationId: createTeam
+      tags:
+        - Staff and Teams
+      summary: Create team
+      description: Creates a new team.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TeamInput'
+      responses:
+        '200':
+          description: The created team.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Team'
+  /v1/webhooks:
+    get:
+      operationId: getWebhooks
+      tags:
+        - Webhooks
+      summary: List webhook subscriptions
+      description: Returns the registered webhook subscriptions.
+      responses:
+        '200':
+          description: A list of webhook subscriptions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Webhook'
+    post:
+      operationId: createWebhook
+      tags:
+        - Webhooks
+      summary: Register webhook subscription
+      description: >-
+        Registers a webhook callback URL to receive events such as new and
+        updated contacts and incoming messages.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookInput'
+      responses:
+        '200':
+          description: The created webhook subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Sleekflow-ApiKey
+      description: >-
+        Platform API key issued from the SleekFlow Integrations dashboard
+        (Admin access required).
+  schemas:
+    Contact:
+      type: object
+      properties:
+        id:
+          type: string
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        customFields:
+          type: object
+          additionalProperties: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ContactInput:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        customFields:
+          type: object
+          additionalProperties: true
+    ContactList:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
+    ContactSearchRequest:
+      type: object
+      properties:
+        filters:
+          type: array
+          items:
+            type: object
+            properties:
+              fieldName:
+                type: string
+              operator:
+                type: string
+              value:
+                type: string
+        includedFields:
+          type: array
+          items:
+            type: string
+        limit:
+          type: integer
+        offset:
+          type: integer
+    ContactIdList:
+      type: object
+      properties:
+        contactIds:
+          type: array
+          items:
+            type: string
+      required:
+        - contactIds
+    ContactGroup:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        contactCount:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+    ContactGroupInput:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    Conversation:
+      type: object
+      properties:
+        id:
+          type: string
+        contactId:
+          type: string
+        channel:
+          type: string
+        status:
+          type: string
+          enum: [open, pending, closed]
+        assignedTo:
+          type: string
+        teamId:
+          type: string
+        updatedAt:
+          type: string
+          format: date-time
+    AssigneeUpdate:
+      type: object
+      properties:
+        assignedToStaffId:
+          type: string
+        teamId:
+          type: string
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        conversationId:
+          type: string
+        contactId:
+          type: string
+        channel:
+          type: string
+        direction:
+          type: string
+          enum: [inbound, outbound]
+        messageType:
+          type: string
+        message:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+    SendMessageRequest:
+      type: object
+      properties:
+        contactId:
+          type: string
+        channel:
+          type: string
+          description: Channel code such as whatsapp, whatsappcloudapi, facebook, instagram, wechat, line, or sms.
+        message:
+          type: string
+        messageType:
+          type: string
+      required:
+        - contactId
+        - channel
+        - message
+    ConversationWindow:
+      type: object
+      properties:
+        contactId:
+          type: string
+        isWithinWindow:
+          type: boolean
+        windowExpiresAt:
+          type: string
+          format: date-time
+    Company:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        domain:
+          type: string
+        customFields:
+          type: object
+          additionalProperties: true
+    CompanyInput:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+        customFields:
+          type: object
+          additionalProperties: true
+      required:
+        - name
+    Staff:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
+        role:
+          type: string
+        teamIds:
+          type: array
+          items:
+            type: string
+    Team:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        memberCount:
+          type: integer
+    TeamInput:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    Webhook:
+      type: object
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+    WebhookInput:
+      type: object
+      properties:
+        url:
+          type: string
+        events:
+          type: array
+          items:
+            type: string
+            enum:
+              - contact.created
+              - contact.updated
+              - message.received
+      required:
+        - url
+        - events

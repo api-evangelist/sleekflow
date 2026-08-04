@@ -1,0 +1,26 @@
+{
+  "provider": "sleekflow",
+  "sources": [
+    "sleekflow-companies-api-openapi.yml",
+    "sleekflow-contacts-api-openapi.yml",
+    "sleekflow-conversations-api-openapi.yml",
+    "sleekflow-lists-api-openapi.yml",
+    "sleekflow-messaging-api-openapi.yml",
+    "sleekflow-staff-and-teams-api-openapi.yml",
+    "sleekflow-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "sleekflow-companies-api-openapi.yml",
+    "sleekflow-contacts-api-openapi.yml",
+    "sleekflow-conversations-api-openapi.yml",
+    "sleekflow-lists-api-openapi.yml",
+    "sleekflow-messaging-api-openapi.yml",
+    "sleekflow-staff-and-teams-api-openapi.yml",
+    "sleekflow-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
