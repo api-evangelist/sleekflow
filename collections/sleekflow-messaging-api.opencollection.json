@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SleekFlow Platform Companies Messaging API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Sleekflow-ApiKey",
+      "value": "{{X-Sleekflow-ApiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Messaging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/messages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a message to a contact over a supported channel such as WhatsApp, Facebook Messenger, Instagram, WeChat, LINE, or SMS."
+        },
+        {
+          "info": {
+            "name": "Send local file with message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/messages/file",
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "channel",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "contactId",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "message",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Sends a message with an attached local file to a contact."
+        },
+        {
+          "info": {
+            "name": "Send internal note",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/messages/note",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds an internal note to a conversation, visible only to staff."
+        },
+        {
+          "info": {
+            "name": "Check WhatsApp Business conversation window",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/messages/conversation-window",
+            "params": [
+              {
+                "name": "contactId",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Checks whether the 24-hour WhatsApp Business customer service window is open for a contact, determining whether a free-form message or a template message must be sent."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

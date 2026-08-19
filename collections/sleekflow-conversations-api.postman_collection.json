@@ -1,0 +1,388 @@
+{
+  "item": [
+    {
+      "id": "18d5cd2c-ca4d-458d-b2e8-c6c9bc97e3d3",
+      "name": "Conversations",
+      "description": {
+        "content": "Read conversations and update conversation assignment.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e8fd87d7-b8f4-442b-9ceb-f3141cedb401",
+          "name": "Get conversations",
+          "request": {
+            "name": "Get conversations",
+            "description": {
+              "content": "Returns conversations, optionally filtered by assignee, team, status, channel, and date range, for analytics and inbox integrations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "conversations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "assignedTo",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "teamId",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c15e624-3592-47eb-87b3-33d537b84424",
+              "name": "A list of conversations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "conversations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assignedTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "teamId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Sleekflow-ApiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"contactId\": \"string\",\n    \"channel\": \"string\",\n    \"status\": \"pending\",\n    \"assignedTo\": \"string\",\n    \"teamId\": \"string\",\n    \"updatedAt\": \"1995-03-28T14:03:15.272Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"contactId\": \"string\",\n    \"channel\": \"string\",\n    \"status\": \"open\",\n    \"assignedTo\": \"string\",\n    \"teamId\": \"string\",\n    \"updatedAt\": \"1952-12-11T17:28:43.567Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "54608e69-dfb5-4823-ae4a-587c195aaf8b",
+          "name": "Get messages",
+          "request": {
+            "name": "Get messages",
+            "description": {
+              "content": "Returns the messages within a conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "conversations",
+                ":conversationId",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "conversationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c028028b-462e-4911-8f84-3ee345f7baf2",
+              "name": "A list of messages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "conversations",
+                    ":conversationId",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conversationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Sleekflow-ApiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"conversationId\": \"string\",\n    \"contactId\": \"string\",\n    \"channel\": \"string\",\n    \"direction\": \"inbound\",\n    \"messageType\": \"string\",\n    \"message\": \"string\",\n    \"createdAt\": \"1993-09-20T21:13:20.079Z\"\n  },\n  {\n    \"id\": \"string\",\n    \"conversationId\": \"string\",\n    \"contactId\": \"string\",\n    \"channel\": \"string\",\n    \"direction\": \"inbound\",\n    \"messageType\": \"string\",\n    \"message\": \"string\",\n    \"createdAt\": \"1949-02-02T17:41:52.811Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e643f12-3907-45da-96e2-db37d2640d3a",
+          "name": "Update conversation's assignee",
+          "request": {
+            "name": "Update conversation's assignee",
+            "description": {
+              "content": "Updates the staff member or team assigned to a conversation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "conversations",
+                ":conversationId",
+                "assignee"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "conversationId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"assignedToStaffId\": \"<string>\",\n  \"teamId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3390eeb5-2e7a-4e7b-9054-6d897c35970e",
+              "name": "The updated conversation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "conversations",
+                    ":conversationId",
+                    "assignee"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "conversationId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Sleekflow-ApiKey",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"assignedToStaffId\": \"<string>\",\n  \"teamId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"contactId\": \"string\",\n  \"channel\": \"string\",\n  \"status\": \"closed\",\n  \"assignedTo\": \"string\",\n  \"teamId\": \"string\",\n  \"updatedAt\": \"1966-09-13T19:48:01.216Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.sleekflow.io",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Sleekflow-ApiKey"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "952dc060-6046-4756-8ee8-3dd7120ed5dc",
+    "name": "SleekFlow Platform Companies Conversations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The SleekFlow Platform API lets you build custom integrations on top of the SleekFlow omnichannel messaging platform. It exposes contacts, conversations and messaging (WhatsApp and other channels), companies, lists, staff and teams, and webhooks. Authentication uses a Platform API key issued from the SleekFlow Integrations dashboard (Admin access required), passed in the X-Sleekflow-ApiKey request header. Endpoint paths in this document follow SleekFlow's documented Platform API resources; verify exact paths and request/response shapes against the live reference at apidoc.sleekflow.io during reconciliation.\n\nContact Support:\n Name: SleekFlow Support",
+      "type": "text/plain"
+    }
+  }
+}

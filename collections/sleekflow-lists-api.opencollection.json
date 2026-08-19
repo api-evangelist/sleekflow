@@ -1,0 +1,132 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SleekFlow Platform Companies Lists API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Sleekflow-ApiKey",
+      "value": "{{X-Sleekflow-ApiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/lists"
+          },
+          "docs": "Returns all contact lists for the account."
+        },
+        {
+          "info": {
+            "name": "Create list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/lists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new contact list."
+        },
+        {
+          "info": {
+            "name": "Get list details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/lists/:listId",
+            "params": [
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details and membership for a contact list."
+        },
+        {
+          "info": {
+            "name": "Delete list",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sleekflow.io/v1/lists/:listId",
+            "params": [
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a contact list."
+        },
+        {
+          "info": {
+            "name": "Add contacts to list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/lists/:listId/contacts",
+            "params": [
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds one or more contacts to a contact list."
+        },
+        {
+          "info": {
+            "name": "Remove contacts from list",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.sleekflow.io/v1/lists/:listId/contacts",
+            "params": [
+              {
+                "name": "listId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Removes one or more contacts from a contact list."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

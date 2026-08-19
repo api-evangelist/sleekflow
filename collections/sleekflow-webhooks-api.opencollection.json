@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SleekFlow Platform Companies Webhooks API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Sleekflow-ApiKey",
+      "value": "{{X-Sleekflow-ApiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhook subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/webhooks"
+          },
+          "docs": "Returns the registered webhook subscriptions."
+        },
+        {
+          "info": {
+            "name": "Register webhook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.sleekflow.io/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a webhook callback URL to receive events such as new and updated contacts and incoming messages."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SleekFlow Platform Companies Conversations API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Sleekflow-ApiKey",
+      "value": "{{X-Sleekflow-ApiKey}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Conversations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get conversations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/conversations",
+            "params": [
+              {
+                "name": "assignedTo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "teamId",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns conversations, optionally filtered by assignee, team, status, channel, and date range, for analytics and inbox integrations."
+        },
+        {
+          "info": {
+            "name": "Get messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.sleekflow.io/v1/conversations/:conversationId/messages",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the messages within a conversation."
+        },
+        {
+          "info": {
+            "name": "Update conversation's assignee",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.sleekflow.io/v1/conversations/:conversationId/assignee",
+            "params": [
+              {
+                "name": "conversationId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the staff member or team assigned to a conversation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
