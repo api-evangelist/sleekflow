@@ -110,6 +110,8 @@ apis:
   humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
   baseURL: https://api.sleekflow.io
   tags:
+  - List
+  tags_raw:
   - Lists
   properties:
   - type: OpenAPI
@@ -182,6 +184,8 @@ apis:
   humanURL: https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts
   baseURL: https://api.sleekflow.io
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
