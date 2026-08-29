@@ -7,6 +7,18 @@ description: SleekFlow is an omnichannel social-commerce and customer-engagement
   and live chat into a single inbox with automation, broadcast, and AI. The SleekFlow
   Platform API exposes contacts, conversations, messaging, companies, lists, staff
   and teams, and webhooks for building custom integrations on top of the platform.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
