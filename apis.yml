@@ -217,6 +217,9 @@ apis:
   - type: Review
     url: review.yml
 common:
+- type: CapabilityMap
+  url: capabilities/sleekflow-capability-edges.yml
+  name: SleekFlow Business Capability Map
 - type: AgenticAccess
   url: agentic-access/sleekflow-agentic-access.yml
 - type: DomainSecurity

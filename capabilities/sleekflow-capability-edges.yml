@@ -1,0 +1,43 @@
+slug: sleekflow
+provider: SleekFlow
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Telecommunications
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Contacts
+  spec_file: sleekflow-contacts-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.85
+  evidence: POST /v1/contacts  addOrUpdateContact  Add or update contact; POST /v1/contacts/search  searchContacts
+  reason: CRUD plus search over customer contact records in an omnichannel engagement platform is squarely
+    customer data/master-record management.
+- tag: Conversations
+  spec_file: sleekflow-conversations-api-openapi.yml
+  capability_id: BC-430.10
+  capability_id_l1: BC-430
+  capability_name: Customer Inquiry Management
+  confidence: 0.72
+  evidence: GET /v1/conversations/{conversationId}/messages  getMessages; PUT /v1/conversations/{conversationId}/assignee  updateConversationAssignee
+  reason: Inbound customer conversations in a unified inbox with assignment of an owning agent corresponds
+    to inbound contact handling and routing. Could arguably sit under contact-centre operations, hence
+    not higher.
+- tag: Companies
+  spec_file: sleekflow-companies-api-openapi.yml
+  capability_id: BC-420.10
+  capability_id_l1: BC-420
+  capability_name: Customer Data Management
+  confidence: 0.7
+  evidence: 'POST /v1/companies  createCompany  Create company; schemas: Company, CompanyInput'
+  reason: Maintenance of company (B2B account/customer organisation) records alongside contacts in a customer-engagement
+    platform is customer master data management. Thin surface, so moderate confidence.
