@@ -218,6 +218,8 @@ apis:
   - type: Review
     url: review.yml
 common:
+- type: Pricing
+  url: https://sleekflow.io/whatsapp-pricing-calculator
 - type: CapabilityMap
   url: capabilities/sleekflow-capability-edges.yml
   name: SleekFlow Business Capability Map
