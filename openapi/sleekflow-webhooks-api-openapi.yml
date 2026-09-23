@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: SleekFlow Platform Companies Webhooks API
-  description: The SleekFlow Platform API lets you build custom integrations on top of the SleekFlow omnichannel messaging platform. It exposes contacts, conversations and messaging (WhatsApp and other channels), companies, lists, staff and teams, and webhooks. Authentication uses a Platform API key issued from the SleekFlow Integrations dashboard (Admin access required), passed in the X-Sleekflow-ApiKey request header. Endpoint paths in this document follow SleekFlow's documented Platform API resources; verify exact paths and request/response shapes against the live reference at apidoc.sleekflow.io during reconciliation.
+  title: SleekFlow Platform Webhooks API
+  description: The SleekFlow Platform API lets you build custom integrations on top of the SleekFlow omnichannel messaging platform.
   termsOfService: https://sleekflow.io/terms-of-service
   contact:
     name: SleekFlow Support
