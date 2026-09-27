@@ -104,6 +104,29 @@ paths:
                 $ref: '#/components/schemas/Conversation'
 components:
   schemas:
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        conversationId:
+          type: string
+        contactId:
+          type: string
+        channel:
+          type: string
+        direction:
+          type: string
+          enum:
+          - inbound
+          - outbound
+        messageType:
+          type: string
+        message:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
     AssigneeUpdate:
       type: object
       properties:
@@ -131,29 +154,6 @@ components:
         teamId:
           type: string
         updatedAt:
-          type: string
-          format: date-time
-    Message:
-      type: object
-      properties:
-        id:
-          type: string
-        conversationId:
-          type: string
-        contactId:
-          type: string
-        channel:
-          type: string
-        direction:
-          type: string
-          enum:
-          - inbound
-          - outbound
-        messageType:
-          type: string
-        message:
-          type: string
-        createdAt:
           type: string
           format: date-time
   securitySchemes:

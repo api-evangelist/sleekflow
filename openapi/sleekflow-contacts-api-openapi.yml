@@ -119,11 +119,9 @@ paths:
           description: Contact deleted.
 components:
   schemas:
-    Contact:
+    ContactInput:
       type: object
       properties:
-        id:
-          type: string
         firstName:
           type: string
         lastName:
@@ -135,12 +133,6 @@ components:
         customFields:
           type: object
           additionalProperties: true
-        createdAt:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
     ContactSearchRequest:
       type: object
       properties:
@@ -176,9 +168,11 @@ components:
           type: integer
         offset:
           type: integer
-    ContactInput:
+    Contact:
       type: object
       properties:
+        id:
+          type: string
         firstName:
           type: string
         lastName:
@@ -190,6 +184,12 @@ components:
         customFields:
           type: object
           additionalProperties: true
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

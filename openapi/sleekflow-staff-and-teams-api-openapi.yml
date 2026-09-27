@@ -89,6 +89,15 @@ paths:
                 $ref: '#/components/schemas/Team'
 components:
   schemas:
+    Team:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        memberCount:
+          type: integer
     Staff:
       type: object
       properties:
@@ -104,15 +113,6 @@ components:
           type: array
           items:
             type: string
-    Team:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        memberCount:
-          type: integer
     TeamInput:
       type: object
       properties:

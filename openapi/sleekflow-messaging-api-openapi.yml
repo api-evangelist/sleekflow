@@ -120,32 +120,6 @@ paths:
                 $ref: '#/components/schemas/ConversationWindow'
 components:
   schemas:
-    ConversationWindow:
-      type: object
-      properties:
-        contactId:
-          type: string
-        isWithinWindow:
-          type: boolean
-        windowExpiresAt:
-          type: string
-          format: date-time
-    SendMessageRequest:
-      type: object
-      properties:
-        contactId:
-          type: string
-        channel:
-          type: string
-          description: Channel code such as whatsapp, whatsappcloudapi, facebook, instagram, wechat, line, or sms.
-        message:
-          type: string
-        messageType:
-          type: string
-      required:
-      - contactId
-      - channel
-      - message
     Message:
       type: object
       properties:
@@ -167,6 +141,32 @@ components:
         message:
           type: string
         createdAt:
+          type: string
+          format: date-time
+    SendMessageRequest:
+      type: object
+      properties:
+        contactId:
+          type: string
+        channel:
+          type: string
+          description: Channel code such as whatsapp, whatsappcloudapi, facebook, instagram, wechat, line, or sms.
+        message:
+          type: string
+        messageType:
+          type: string
+      required:
+      - contactId
+      - channel
+      - message
+    ConversationWindow:
+      type: object
+      properties:
+        contactId:
+          type: string
+        isWithinWindow:
+          type: boolean
+        windowExpiresAt:
           type: string
           format: date-time
   securitySchemes:

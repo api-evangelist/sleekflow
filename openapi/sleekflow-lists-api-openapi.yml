@@ -131,22 +131,6 @@ paths:
           description: Contacts removed from list.
 components:
   schemas:
-    ContactGroupInput:
-      type: object
-      properties:
-        name:
-          type: string
-      required:
-      - name
-    ContactIdList:
-      type: object
-      properties:
-        contactIds:
-          type: array
-          items:
-            type: string
-      required:
-      - contactIds
     ContactGroup:
       type: object
       properties:
@@ -159,6 +143,22 @@ components:
         createdAt:
           type: string
           format: date-time
+    ContactIdList:
+      type: object
+      properties:
+        contactIds:
+          type: array
+          items:
+            type: string
+      required:
+      - contactIds
+    ContactGroupInput:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+      - name
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
