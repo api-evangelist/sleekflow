@@ -73,18 +73,6 @@ paths:
                 $ref: '#/components/schemas/Company'
 components:
   schemas:
-    CompanyInput:
-      type: object
-      properties:
-        name:
-          type: string
-        domain:
-          type: string
-        customFields:
-          type: object
-          additionalProperties: true
-      required:
-      - name
     Company:
       type: object
       properties:
@@ -97,6 +85,18 @@ components:
         customFields:
           type: object
           additionalProperties: true
+    CompanyInput:
+      type: object
+      properties:
+        name:
+          type: string
+        domain:
+          type: string
+        customFields:
+          type: object
+          additionalProperties: true
+      required:
+      - name
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

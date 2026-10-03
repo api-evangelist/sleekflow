@@ -143,6 +143,16 @@ components:
         createdAt:
           type: string
           format: date-time
+    ConversationWindow:
+      type: object
+      properties:
+        contactId:
+          type: string
+        isWithinWindow:
+          type: boolean
+        windowExpiresAt:
+          type: string
+          format: date-time
     SendMessageRequest:
       type: object
       properties:
@@ -159,16 +169,6 @@ components:
       - contactId
       - channel
       - message
-    ConversationWindow:
-      type: object
-      properties:
-        contactId:
-          type: string
-        isWithinWindow:
-          type: boolean
-        windowExpiresAt:
-          type: string
-          format: date-time
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

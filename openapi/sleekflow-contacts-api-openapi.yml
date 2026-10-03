@@ -133,6 +133,19 @@ components:
         customFields:
           type: object
           additionalProperties: true
+    ContactList:
+      type: object
+      properties:
+        records:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contact'
+        total:
+          type: integer
+        limit:
+          type: integer
+        offset:
+          type: integer
     ContactSearchRequest:
       type: object
       properties:
@@ -151,19 +164,6 @@ components:
           type: array
           items:
             type: string
-        limit:
-          type: integer
-        offset:
-          type: integer
-    ContactList:
-      type: object
-      properties:
-        records:
-          type: array
-          items:
-            $ref: '#/components/schemas/Contact'
-        total:
-          type: integer
         limit:
           type: integer
         offset:
