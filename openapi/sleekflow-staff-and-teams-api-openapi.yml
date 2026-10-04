@@ -89,15 +89,13 @@ paths:
                 $ref: '#/components/schemas/Team'
 components:
   schemas:
-    Team:
+    TeamInput:
       type: object
       properties:
-        id:
-          type: string
         name:
           type: string
-        memberCount:
-          type: integer
+      required:
+      - name
     Staff:
       type: object
       properties:
@@ -113,13 +111,15 @@ components:
           type: array
           items:
             type: string
-    TeamInput:
+    Team:
       type: object
       properties:
+        id:
+          type: string
         name:
           type: string
-      required:
-      - name
+        memberCount:
+          type: integer
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

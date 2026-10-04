@@ -104,29 +104,6 @@ paths:
                 $ref: '#/components/schemas/Conversation'
 components:
   schemas:
-    Message:
-      type: object
-      properties:
-        id:
-          type: string
-        conversationId:
-          type: string
-        contactId:
-          type: string
-        channel:
-          type: string
-        direction:
-          type: string
-          enum:
-          - inbound
-          - outbound
-        messageType:
-          type: string
-        message:
-          type: string
-        createdAt:
-          type: string
-          format: date-time
     Conversation:
       type: object
       properties:
@@ -156,6 +133,29 @@ components:
           type: string
         teamId:
           type: string
+    Message:
+      type: object
+      properties:
+        id:
+          type: string
+        conversationId:
+          type: string
+        contactId:
+          type: string
+        channel:
+          type: string
+        direction:
+          type: string
+          enum:
+          - inbound
+          - outbound
+        messageType:
+          type: string
+        message:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
