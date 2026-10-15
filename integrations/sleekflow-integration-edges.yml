@@ -7,6 +7,7 @@ checked:
 - https://monid.ai/tools/sleekflow
 - https://n8n.io/integrations/sleekflow/
 - https://zapier.com/apps/sleekflow/integrations
+- shopify/integrations/shopify-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -367,6 +368,24 @@ edges:
   direction: third-party
   category: CRM (Customer Relationship Management)
   partner_url: https://copper.com/?utm_source=zapier&utm_medium=zapier
+- partner_name: Shopify (own)
+  partner: shopify
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.shopify.com/sleekflow
+  mirror_of: shopify/integrations/shopify-integration-edges.yml
+  apps:
+  - SleekFlow ‑ Conversational AI
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  publisher_verified:
+  - Built for Shopify
 templates:
 - title: Create or update SleekFlow contacts from new Jotform submissions
   url: https://zapier.com/apps/jotform/integrations/sleekflow/1283672/create-or-update-sleekflow-contacts-from-new-jotform-submissions
