@@ -9,6 +9,7 @@ checked:
 - https://zapier.com/api/v4/apps/
 - https://zapier.com/apps/sleekflow/integrations
 - shopify/integrations/shopify-integration-edges.yml
+- hubspot/integrations/hubspot-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: zapier
@@ -39,24 +40,6 @@ marketplace_apps:
     label: Update Custom Object Record
   searches: []
 edges:
-- partner_name: Shopify (own)
-  partner: shopify
-  partner_match: mirror
-  mirror_match: domain
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://apps.shopify.com/sleekflow
-  mirror_of: shopify/integrations/shopify-integration-edges.yml
-  apps:
-  - SleekFlow ‑ Conversational AI
-  listing_count: 1
-  detected: '2026-10-15'
-  detected_by: mirror-platform-listings.py
-  publisher_verified:
-  - Built for Shopify
 - partner_name: Zapier
   partner: zapier
   partner_match: aggregator
@@ -442,6 +425,41 @@ edges:
   direction: third-party
   category: Databases
   partner_url: http://www.firebase.com/
+- partner_name: Shopify (own)
+  partner: shopify
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://apps.shopify.com/sleekflow
+  mirror_of: shopify/integrations/shopify-integration-edges.yml
+  apps:
+  - SleekFlow ‑ Conversational AI
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  publisher_verified:
+  - Built for Shopify
+- partner_name: HubSpot (own)
+  partner: hubspot
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/sleekflow-sync-468506
+  mirror_of: hubspot/integrations/hubspot-integration-edges.yml
+  apps:
+  - 'Sleekflow - #1 AI Suite for Revenue-Driving Conversations'
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: LIVE_CHAT
 templates:
 - title: Create or update SleekFlow contacts from new Jotform submissions
   url: https://zapier.com/apps/jotform/integrations/sleekflow/1283672/create-or-update-sleekflow-contacts-from-new-jotform-submissions

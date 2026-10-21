@@ -78,18 +78,6 @@
   relationship: ipaas-bridge
   status: pending-generation
   arazzo: null
-- slug: sleekflow-shopify-own
-  label: Shopify (own)
-  partner: shopify
-  partner_name: Shopify (own)
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://apps.shopify.com/sleekflow
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: sleekflow-zapier
   label: Zapier
   partner: zapier
@@ -444,4 +432,29 @@
   source: edge
   relationship: ipaas-bridge
   status: pending-partner-spec
+  arazzo: null
+- slug: sleekflow-shopify-own
+  label: Shopify (own)
+  partner: shopify
+  partner_name: Shopify (own)
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://apps.shopify.com/sleekflow
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: sleekflow-hubspot-own
+  label: HubSpot (own)
+  partner: hubspot
+  partner_name: HubSpot (own)
+  category: LIVE_CHAT
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://ecosystem.hubspot.com/marketplace/listing/sleekflow-sync-468506
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
   arazzo: null
