@@ -1,4 +1,4 @@
-# SleekFlow (sleekflow)
+# SleekFlow
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,155 +66,129 @@
 
 SleekFlow is an omnichannel social-commerce and customer-engagement platform that unifies WhatsApp, Facebook Messenger, Instagram, WeChat, LINE, SMS, and live chat into a single inbox with automation, broadcast, and AI. The SleekFlow Platform API exposes contacts, conversations, messaging, companies, lists, staff and teams, and webhooks for building custom integrations on top of the platform.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/sleekflow/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/sleekflow/refs/heads/main/apis.yml)
+**Areas:** Messaging · Omnichannel · WhatsApp · Customer Engagement · Social Commerce · Automation
 
-## Tags
+## SleekFlow on APIs.io
 
-- Messaging
-- Omnichannel
-- WhatsApp
-- Customer Engagement
-- Social Commerce
-- Automation
+Everything profiled for SleekFlow is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/sleekflow/](https://apis.io/providers/sleekflow/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (7)
 
-- **Created:** 2026-06-20
-- **Modified:** 2026-06-20
+- [SleekFlow Companies API](https://apis.io/apis/sleekflow/sleekflow-companies-api/) — Manage company records.
+- [SleekFlow Contacts API](https://apis.io/apis/sleekflow/sleekflow-contacts-api/) — Create, read, search, update, and delete contacts.
+- [SleekFlow Conversations API](https://apis.io/apis/sleekflow/sleekflow-conversations-api/) — Read conversations and update conversation assignment.
+- [SleekFlow Lists API](https://apis.io/apis/sleekflow/sleekflow-lists-api/) — Manage contact lists and list membership.
+- [SleekFlow Messaging API](https://apis.io/apis/sleekflow/sleekflow-messaging-api/) — Send messages, files, and internal notes; check conversation windows.
+- [SleekFlow Staff and Teams API](https://apis.io/apis/sleekflow/sleekflow-staff-and-teams-api/) — Manage staff and teams.
+- [SleekFlow Webhooks API](https://apis.io/apis/sleekflow/sleekflow-webhooks-api/) — Register webhook subscriptions for platform events.
 
-## APIs
+### Published properties
 
-### SleekFlow Contacts API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create, update, retrieve, search, and delete contacts, including dynamic field selection, so customer records can be synced between SleekFlow and external systems.
+#### Agentic access (1)
 
-- **Human URL:** [https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts](https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts)
-- **Base URL:** `https://api.sleekflow.io`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Sleekflow Agentic Access](https://apis.io/agentic-access/sleekflow/sleekflow-agentic-access/)
 
-- Contacts
-- CRM
-- Customers
+#### Collections (8)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://help.sleekflow.io/en_US/integrations/platform-api-integration)
-- [API Reference](https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts)
-- [OpenAPI](openapi/sleekflow-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sleekflow.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sleekflow.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [SleekFlow Platform API](https://apis.io/collections/sleekflow/open-sleekflow/)
+- [SleekFlow Platform Companies API](https://apis.io/collections/sleekflow/open-sleekflow-companies-api/)
+- [SleekFlow Platform Companies Contacts API](https://apis.io/collections/sleekflow/open-sleekflow-contacts-api/)
+- [SleekFlow Platform Companies Conversations API](https://apis.io/collections/sleekflow/open-sleekflow-conversations-api/)
+- [SleekFlow Platform Companies Lists API](https://apis.io/collections/sleekflow/open-sleekflow-lists-api/)
+- [SleekFlow Platform Companies Messaging API](https://apis.io/collections/sleekflow/open-sleekflow-messaging-api/)
+- [SleekFlow Platform Companies Staff and Teams API](https://apis.io/collections/sleekflow/open-sleekflow-staff-and-teams-api/)
+- [SleekFlow Platform Companies Webhooks API](https://apis.io/collections/sleekflow/open-sleekflow-webhooks-api/)
 
-### SleekFlow Conversations & Messaging API
+#### Security (2)
 
-Send messages, files, and internal notes across WhatsApp and other channels, check the WhatsApp Business conversation window, retrieve conversations and messages, and update a conversation's assignee in the shared inbox.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging](https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging)
-- **Base URL:** `https://api.sleekflow.io`
+- [Sleekflow Authentication](https://apis.io/security/sleekflow/sleekflow-authentication/)
+- [Sleekflow Domain Security](https://apis.io/security/sleekflow/sleekflow-domain-security/)
 
-#### Tags
+#### Plans and pricing (2)
 
-- Conversations
-- Messaging
-- Inbox
-- WhatsApp
+Published plans, tiers and prices.
 
-#### Properties
+- [Sleekflow Plans Pricing](https://apis.io/plans/sleekflow/sleekflow-plans-pricing/)
+- [Sleekflow Price Estimates](https://apis.io/plans/sleekflow/sleekflow-price-estimates/)
 
-- [API Reference](https://apidoc.sleekflow.io/docs/platform-api/9ty13q0r571om-messaging)
-- [OpenAPI](openapi/sleekflow-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sleekflow.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sleekflow.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### SleekFlow Companies API
+Published request limits.
 
-Manage company records and associate contacts with companies for B2B engagement workflows.
+- [Sleekflow Rate Limits](https://apis.io/rate-limits/sleekflow/sleekflow-rate-limits/)
 
-- **Human URL:** [https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api](https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api)
-- **Base URL:** `https://api.sleekflow.io`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Companies
-- Organizations
-- CRM
+- [Sleekflow Finops](https://apis.io/finops/sleekflow/sleekflow-finops/)
 
-#### Properties
+## Where to find this API
 
-- [API Reference](https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api)
-- [OpenAPI](openapi/sleekflow-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sleekflow.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sleekflow.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### SleekFlow Lists API
-
-Create and manage contact lists, retrieve list details, and add or remove contacts from lists for segmentation and broadcast targeting.
-
-- **Human URL:** [https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts](https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts)
-- **Base URL:** `https://api.sleekflow.io`
-
-#### Tags
-
-- Lists
-- Segmentation
-- Contacts
-
-#### Properties
-
-- [API Reference](https://apidoc.sleekflow.io/docs/platform-api/3z6iu3fo5evix-contacts)
-- [OpenAPI](openapi/sleekflow-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sleekflow.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sleekflow.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### SleekFlow Staff & Teams API
-
-List and manage staff and teams, assign staff to teams, and read per-staff conversation summaries for workforce and routing management.
-
-- **Human URL:** [https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team](https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team)
-- **Base URL:** `https://api.sleekflow.io`
-
-#### Tags
-
-- Staff
-- Teams
-- Users
-
-#### Properties
-
-- [API Reference](https://apidoc.sleekflow.io/docs/platform-api/t21aeu2xvtiw6-staff-and-team)
-- [OpenAPI](openapi/sleekflow-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/sleekflow.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/sleekflow.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### SleekFlow Webhooks API
-
-Register webhook subscriptions to receive real-time HTTP callbacks for new and updated contacts and incoming messages, enabling event-driven integrations.
-
-- **Human URL:** [https://help.sleekflow.io/en_US/integrations/platform-api-integration](https://help.sleekflow.io/en_US/integrations/platform-api-integration)
-- **Base URL:** `https://api.sleekflow.io`
-
-#### Tags
-
-- Webhooks
-- Events
-- Notifications
-
-#### Properties
-
-- [Documentation](https://help.sleekflow.io/en_US/integrations/platform-api-integration)
-- [OpenAPI](openapi/sleekflow-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Review](review.yml)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/sleekflow)
 - [Website](https://sleekflow.io)
 - [Documentation](https://apidoc.sleekflow.io/docs/platform-api/nijbjgxrs4s50-sleek-flow-platform-api)
-- [Plans](plans/sleekflow-plans-pricing.yml)
-- [Rate Limits](rate-limits/sleekflow-rate-limits.yml)
-- [Fin Ops](finops/sleekflow-finops.yml)
+- [Pricing](https://sleekflow.io/whatsapp-pricing-calculator)
+- [Blog](https://sleekflow.io/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 37.2** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 47.8 |
+| Contract governance | 0.0 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 42.1 |
+
+**Agent readiness 19.8** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/sleekflow/](https://apis.io/providers/sleekflow/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for SleekFlow: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/sleekflow/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
